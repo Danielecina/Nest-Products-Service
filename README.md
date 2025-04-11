@@ -4,8 +4,16 @@
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
+[coveralls-image]: https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/nb198/products-service?branch=master
+<p align="center">An incredible exercise to test a <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
 
-  <p align="center">An incredible exercise to test a <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+<p align="center">
+  <a href="https://coveralls.io/github/nb198/products-service?branch=master" target="_blank">
+    <img src="https://coveralls.io/repos/github/danielecina/products-service/badge.svg?branch=master" alt="Coverage Status" />
+  </a>
+</p>
+</p>
 
 ## Architecture of the Project
 
@@ -28,7 +36,7 @@ This service follows Domain-Driven Design (DDD) principles and is structured as 
 
 ## Try the service locally
 
-the service need a mysql server to work correctly. For this i prepare a simple docker-compose
+The service needs a MySQL server to work correctly. For this, I prepared a simple docker-compose:
 
 ```bash
 $ docker-compose up --build
