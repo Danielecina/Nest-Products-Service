@@ -83,6 +83,19 @@ describe('Products Controller Integration Tests', () => {
       expect(mockGetProducts.execute).toHaveBeenCalled();
     });
 
+    test('200 - should work with pagination', async () => {
+      const response = await request(app.getHttpServer())
+        .get('/products')
+        .query({ page: 1, perPage: 10 });
+
+      expect(response.status).toBe(200);
+      expect(Array.isArray(response.body)).toBe(true);
+      expect(mockGetProducts.execute).toHaveBeenCalledWith({
+        page: 1,
+        perPage: 10,
+      });
+    });
+
     test('500', async () => {
       mockGetProducts.execute.mockRejectedValueOnce(
         new Error(GetProducts.ERROR_TYPE.PRODUCTS_RETRIEVE_FAILED),

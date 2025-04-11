@@ -20,7 +20,8 @@ export class GetProducts {
 
   static ERROR_TYPE = ERROR_TYPE;
 
-  async execute({ page, perPage }: GetProductsDto): Promise<ProductDto[]> {
+  async execute(query: GetProductsDto): Promise<ProductDto[]> {
+    const { page = 1, perPage = 10 } = query;
     try {
       const products = await this.product.findAll<ProductEntity>({
         offset: (page - 1) * perPage,
