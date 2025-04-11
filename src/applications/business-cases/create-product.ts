@@ -29,9 +29,11 @@ export class CreateProduct {
         price: dto.price,
       };
 
+      this.logger.log(productData, 'creating product');
       const createdProduct =
         await this.product.create<ProductEntity>(productData);
 
+      this.logger.debug(productData, 'product created');
       return this.mapToResponseDto(createdProduct.toJSON());
     } catch (error) {
       this.logger.error(

@@ -33,7 +33,7 @@ export class DeleteProduct {
       throw new Error(ERROR_TYPE.PRODUCT_DELETE_FAILED);
     }
 
-    if (deletedProduct === null) {
+    if (deletedProduct === 0) {
       this.logger.error(ERROR_TYPE.PRODUCT_NOT_FOUND);
       throw new Error(ERROR_TYPE.PRODUCT_NOT_FOUND);
     }
