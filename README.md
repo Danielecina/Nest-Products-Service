@@ -2,15 +2,11 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-[coveralls-image]: https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master
-[coveralls-url]: https://coveralls.io/github/nb198/products-service?branch=master
 <p align="center">An incredible exercise to test a <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
 
 <p align="center">
-  <a href="https://coveralls.io/github/nb198/products-service?branch=master" target="_blank">
-    <img src="https://coveralls.io/repos/github/danielecina/products-service/badge.svg?branch=master" alt="Coverage Status" />
+  <a href="https://coveralls.io/github/Danielecina/Nest-Products-Service?branch=master" target="_blank">
+    <img src="https://coveralls.io/github/Danielecina/Nest-Products-Service?branch=master" alt="Coverage Status" />
   </a>
 </p>
 </p>
