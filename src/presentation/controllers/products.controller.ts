@@ -18,7 +18,7 @@ import { UpdateProductStock } from '../../applications/business-cases/update-pro
 import { CreateProductDto } from '../dto/create-product.dto';
 import { CreateProduct } from '../../applications/business-cases/create-product';
 import { DeleteProduct } from '../../applications/business-cases/delete-product';
-import { GetProductsDto } from '../dto/get-products.dto';
+import { GetProductsDtoQuery } from '../dto/get-products.dto';
 import { GetProducts } from '../../applications/business-cases/get-products';
 import { ProductDto } from '../dto/product.dto';
 
@@ -43,7 +43,7 @@ export class ProductsController {
   static ERROR_TYPE = ERROR_TYPE;
 
   @Get()
-  async findAll(@Query() query: GetProductsDto): Promise<ProductDto[]> {
+  async findAll(@Query() query: GetProductsDtoQuery): Promise<ProductDto[]> {
     try {
       return await this.getProducts.execute(query);
     } catch (error) {
@@ -59,11 +59,11 @@ export class ProductsController {
   @Patch(':id/stock')
   @HttpCode(200)
   async update(
-    @Param('id') id: number,
+    @Param('id') productToken: ProductDto['productToken'],
     @Body() body: UpdateProductStockDto,
   ): Promise<ProductDto> {
     try {
-      return await this.updateProductStock.execute(id, body.stock);
+      return await this.updateProductStock.execute(productToken, body.stock);
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error

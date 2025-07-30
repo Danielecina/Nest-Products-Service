@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
 import { Product as ProductEntity } from '../../domains/entities/product.entity';
-import { GetProductsDto } from '../../presentation/dto/get-products.dto';
+import { GetProductsDtoQuery } from '../../presentation/dto/get-products.dto';
 import { ProductDto } from 'src/presentation/dto/product.dto';
 
 const ERROR_TYPE = {
@@ -20,10 +20,11 @@ export class GetProducts {
 
   static ERROR_TYPE = ERROR_TYPE;
 
-  async execute(query: GetProductsDto): Promise<ProductDto[]> {
+  async execute(query: GetProductsDtoQuery): Promise<ProductDto[]> {
     const { page = 1, perPage = 10 } = query;
     try {
       const products = await this.product.findAll<ProductEntity>({
+        order: [['createdAt', 'DESC']],
         offset: (page - 1) * perPage,
         limit: perPage,
       });

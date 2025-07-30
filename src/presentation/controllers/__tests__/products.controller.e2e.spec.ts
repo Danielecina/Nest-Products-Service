@@ -199,7 +199,7 @@ describe('Products Controller Integration Tests', () => {
 
       expect(response.status).toBe(200);
       expect(mockUpdateProductStock.execute).toHaveBeenCalledWith(
-        productId,
+        productId.toString(),
         updateStockDto.stock,
       );
     });
@@ -260,7 +260,7 @@ describe('Products Controller Integration Tests', () => {
   });
 
   describe('DELETE /products/:id', () => {
-    it('should delete a product by ID', async () => {
+    it('204 - should delete a product by ID', async () => {
       const productId = 123;
       const response = await request(app.getHttpServer()).delete(
         `/products/${productId}`,
@@ -270,7 +270,7 @@ describe('Products Controller Integration Tests', () => {
       expect(mockDeleteProduct.execute).toHaveBeenCalledWith(productId);
     });
 
-    it('should return 404 if the product is not found', async () => {
+    it('404 - should fails if the product is not found', async () => {
       const invalidId = 'nonexistent-id';
       mockDeleteProduct.execute.mockRejectedValueOnce(
         new Error(DeleteProduct.ERROR_TYPE.PRODUCT_NOT_FOUND),

@@ -1,12 +1,12 @@
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
-import { GetProductsDto } from '../get-products.dto';
+import { GetProductsDtoQuery } from '../get-products.dto';
 
-describe('GetProductsDto', () => {
-  let getProductsDto: GetProductsDto;
+describe('GetProductsDtoQuery', () => {
+  let getProductsDto: GetProductsDtoQuery;
 
   beforeEach(() => {
-    getProductsDto = new GetProductsDto();
+    getProductsDto = new GetProductsDtoQuery();
     getProductsDto.page = 1;
     getProductsDto.perPage = 10;
   });
@@ -18,7 +18,7 @@ describe('GetProductsDto', () => {
 
   test('should fail validation when page is negative', async () => {
     getProductsDto.page = -1;
-    const ofImportDto = plainToInstance(GetProductsDto, getProductsDto);
+    const ofImportDto = plainToInstance(GetProductsDtoQuery, getProductsDto);
     const errors = await validate(ofImportDto);
     expect(errors.length).toBeGreaterThan(0);
     expect(errors[0].constraints).toHaveProperty('min');
@@ -26,7 +26,7 @@ describe('GetProductsDto', () => {
 
   test('should fail validation when page is not an integer', async () => {
     getProductsDto.page = 1.5;
-    const ofImportDto = plainToInstance(GetProductsDto, getProductsDto);
+    const ofImportDto = plainToInstance(GetProductsDtoQuery, getProductsDto);
     const errors = await validate(ofImportDto);
     expect(errors.length).toBeGreaterThan(0);
     expect(errors[0].constraints).toHaveProperty('isInt');
@@ -34,7 +34,7 @@ describe('GetProductsDto', () => {
 
   test('should fail validation when limit is negative', async () => {
     getProductsDto.perPage = -1;
-    const ofImportDto = plainToInstance(GetProductsDto, getProductsDto);
+    const ofImportDto = plainToInstance(GetProductsDtoQuery, getProductsDto);
     const errors = await validate(ofImportDto);
     expect(errors.length).toBeGreaterThan(0);
     expect(errors[0].constraints).toHaveProperty('min');
@@ -42,7 +42,7 @@ describe('GetProductsDto', () => {
 
   test('should fail validation when limit is not an integer', async () => {
     getProductsDto.perPage = 1.5;
-    const ofImportDto = plainToInstance(GetProductsDto, getProductsDto);
+    const ofImportDto = plainToInstance(GetProductsDtoQuery, getProductsDto);
     const errors = await validate(ofImportDto);
     expect(errors.length).toBeGreaterThan(0);
     expect(errors[0].constraints).toHaveProperty('isInt');

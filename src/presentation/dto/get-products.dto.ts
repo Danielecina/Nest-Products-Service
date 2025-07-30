@@ -1,7 +1,7 @@
 import { Type } from 'class-transformer';
 import { IsInt, IsOptional, Min } from 'class-validator';
 
-export class GetProductsDto {
+export class GetProductsDtoQuery {
   @Type(() => Number)
   @IsOptional()
   @IsInt()

@@ -51,15 +51,15 @@ describe('UpdateProductStock', () => {
       toJSON: jest.fn().mockReturnValue(updatedProduct),
     });
 
-    const result = await updateProduct.execute(1, 10);
+    const result = await updateProduct.execute('1', 10);
 
     expect(ProductEntityMock.useValue.update).toHaveBeenCalledWith(
       { stock: 10 },
-      { where: { id: 1 } },
+      { where: { productToken: '1' } },
     );
 
     expect(ProductEntityMock.useValue.findOne).toHaveBeenCalledWith({
-      where: { id: 1 },
+      where: { productToken: '1' },
     });
 
     expect(result).toEqual(updatedProduct);
@@ -70,7 +70,7 @@ describe('UpdateProductStock', () => {
       new Error('Database error message'),
     );
 
-    await expect(updateProduct.execute(1, 10)).rejects.toThrow(
+    await expect(updateProduct.execute('1', 10)).rejects.toThrow(
       UpdateProductStock.ERROR_TYPE.PRODUCT_UPDATE_FAILED,
     );
   });
@@ -80,7 +80,7 @@ describe('UpdateProductStock', () => {
       UpdateProductStock.ERROR_TYPE.PRODUCT_RETRIEVE_AFTER_UPDATE_FAILED,
     );
 
-    await expect(updateProduct.execute(1, 10)).rejects.toThrow(
+    await expect(updateProduct.execute('1', 10)).rejects.toThrow(
       UpdateProductStock.ERROR_TYPE.PRODUCT_RETRIEVE_AFTER_UPDATE_FAILED,
     );
   });

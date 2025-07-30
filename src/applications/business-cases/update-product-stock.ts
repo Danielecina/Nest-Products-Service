@@ -22,12 +22,12 @@ export class UpdateProductStock {
 
   static ERROR_TYPE = ERROR_TYPE;
 
-  async execute(id: number, stock: number): Promise<ProductDto> {
+  async execute(productToken: string, stock: number): Promise<ProductDto> {
     let affectedCountResponse: number;
     try {
       const [affectedCount] = await this.product.update<ProductEntity>(
         { stock },
-        { where: { id } },
+        { where: { productToken } },
       );
       affectedCountResponse = affectedCount;
     } catch (error) {
@@ -46,7 +46,7 @@ export class UpdateProductStock {
     let updatedProduct: ProductEntity | null;
     try {
       updatedProduct = await this.product.findOne<ProductEntity>({
-        where: { id },
+        where: { productToken },
       });
     } catch (error) {
       this.logger.error(

@@ -49,6 +49,7 @@ describe('CreateProduct', () => {
     expect(ProductEntityMock.useValue.findAll).toHaveBeenCalledWith({
       offset: 0,
       limit: 10,
+      order: [['createdAt', 'DESC']],
     });
 
     expect(products).toEqual([
